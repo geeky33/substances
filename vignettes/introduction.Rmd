@@ -1,0 +1,98 @@
+---
+title: "Introduction To Substances."
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction To Substances.}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(substances)
+```
+
+## Introduction
+
+The `substances` package enables substance-aware unit conversions in R, allowing transformations between mass and molar units, as well as handling nonstandard medical unit conversions. It extends the functionality of the `units` package by incorporating molecular weight and domain-specific unit conversions.
+
+## Installation
+
+```{r}
+devtools::install_github("https://github.com/geeky33/substances")
+```
+
+## Creating Substances
+
+The package defines a `substances` class with relevant properties such as name, molecular weight, and unit.
+
+```{r}
+library(substances)
+
+# Creating a new substance
+water <- new("substances", name = "water", molecular_weight = 18.02, unit = "g/mol")
+```
+
+## Mass-to-Molar Conversions
+
+The package provides functions to convert between mass and moles for a given substance.
+
+```{r}
+# Convert 36.04 grams of water to moles
+mass_to_moles(36.04, water)  # Output: 2 moles
+
+# Convert 2 moles of water to mass
+moles_to_mass(2, water)  # Output: 36.04 grams
+```
+
+## Medical Unit Conversions
+
+The package supports conversions between nonstandard medical units.
+
+```{r}
+# Convert 50 U/L to ukat/L
+convert_medical_units(50, "U/L", "ukat/L")  # Output: 5e-5 ukat/L
+```
+
+## Arithmetic Operations on Substances
+
+The package supports basic arithmetic operations on substances.
+
+```{r}
+# Adding two identical substances
+ethanol <- new("substances", name = "ethanol", molecular_weight = 46.07, unit = "g/mol")
+combined_ethanol <- ethanol + ethanol
+combined_ethanol@molecular_weight  # Output: 92.14 g/mol
+
+# Scaling a substance
+scaled_ethanol <- ethanol * 2
+scaled_ethanol@molecular_weight  # Output: 92.14 g/mol
+```
+
+## Error Handling
+
+The package ensures correctness by preventing invalid operations.
+
+```{r}
+# Attempting to add different substances
+try(glucose + ethanol)  # Error: Cannot add different substances
+
+# Attempting to apply logarithm to a substance
+try(log(water))  # Error: Logarithm not applicable to substances
+```
+
+## Database of Common Substances
+
+The package provides a predefined database of common substances.
+
+```{r}
+# Retrieve predefined substances
+db <- get_substances_db()
+db$water  # Output: Substances object for water
+```
