@@ -25,7 +25,8 @@ The `substances` package enables substance-aware unit conversions in R, allowing
 ## Installation
 
 ```{r}
-devtools::install_github("https://github.com/geeky33/substances")
+devtools::install_github("https://github.com/geeky33/substances", build_vignettes = TRUE) 
+
 ```
 
 ## Creating Substances
@@ -75,24 +76,3 @@ scaled_ethanol <- ethanol * 2
 scaled_ethanol@molecular_weight  # Output: 92.14 g/mol
 ```
 
-## Error Handling
-
-The package ensures correctness by preventing invalid operations.
-
-```{r}
-# Attempting to add different substances
-try(glucose + ethanol)  # Error: Cannot add different substances
-
-# Attempting to apply logarithm to a substance
-try(log(water))  # Error: Logarithm not applicable to substances
-```
-
-## Database of Common Substances
-
-The package provides a predefined database of common substances.
-
-```{r}
-# Retrieve predefined substances
-db <- get_substances_db()
-db$water  # Output: Substances object for water
-```
