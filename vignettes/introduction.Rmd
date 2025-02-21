@@ -75,4 +75,3 @@ combined_ethanol@molecular_weight  # Output: 92.14 g/mol
 scaled_ethanol <- ethanol * 2
 scaled_ethanol@molecular_weight  # Output: 92.14 g/mol
 ```
-
