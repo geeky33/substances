@@ -72,7 +72,7 @@ medical_conversion <- convert_medical_units(50, "U/L", "ukat/L")
 print(medical_conversion)
 ```
 
-## Hard Task
+### Hard Task
 
 We have developed an R package that includes functions, tests, vignettes, and proper documentation in Rd files. The package was created using `devtools`, ensuring that it follows best practices for R package development.
 
