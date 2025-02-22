@@ -1,12 +1,11 @@
-# Substances Package: Task Completion Report
+# Substances Package: GSoC 2025 Task Completion Report
 
-# Introduction
-
+### Introduction
 This report outlines the completion of easy and medium-level tasks for the substances package in R. The package facilitates `substance-aware` unit conversions, including `mass-to-mole` transformations and medical unit conversions.
 
 # Task Breakdown
 
-### Easy Task
+## Easy Task
 
 Creating Substances:
 
@@ -41,7 +40,7 @@ print(mass_water)
 mass_glucose <- moles_to_mass(5, glucose)
 print(mass_glucose)
 ```
-### Medium Task
+## Medium Task
 
 Retrieving a Substance from the Database:
 
@@ -72,7 +71,7 @@ medical_conversion <- convert_medical_units(50, "U/L", "ukat/L")
 print(medical_conversion)
 ```
 
-### Hard Task
+## Hard Task
 
 We have developed an R package that includes functions, tests, vignettes, and proper documentation in Rd files. The package was created using `devtools`, ensuring that it follows best practices for R package development.
 
